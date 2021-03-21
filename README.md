@@ -1,7 +1,7 @@
 # detector
 C++ template meta-programming debug tool.
 
-This tool will help print real type info while template meta function running.
+This tool will help print real type info while template meta function running(code compiling).
 
 
 
@@ -31,17 +31,17 @@ struct my_meta_func
 }
 
 int main(int argc, char* argv){
-    // what is t
+    // wonder what t is?
     using t = typename my_meta_func<int, double, void>::type;
-    // use detector show what t is, when t is not void
+    // use detector show what t is, if t is not void
     using out = typename detecor<!std::is_same<t, void>::value, t>::type;
 }
 ```
 
- While compiling, you will see info like below to show what type `t` is
+ While compiling, you will see info like below reveal what type `t` is
 
 ```shell
-detector.h: In instantiation of ‘struct detector<true, std::tuple<int&, double&, void&>’:
+detector.h: In instantiation of ‘struct detector<true, std::tuple<int&, double&, void&> >’:
 ...
 ```
 
